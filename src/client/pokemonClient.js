@@ -7,4 +7,22 @@ async function createPokemon(payload) {
   });
 }
 
-module.exports = { createPokemon };
+async function addPokemonToPokeball(pokemonId) {
+  return request('/trainers/add_pokeball', {
+    method: 'POST',
+    body: JSON.stringify({
+      pokemon_id: String(pokemonId),
+    }),
+  });
+}
+
+async function knockoutPokemon(pokemonId) {
+  return request('/pokemons/knockout', {
+    method: 'POST',
+    body: JSON.stringify({
+      pokemon_id: String(pokemonId),
+    }),
+  });
+}
+
+module.exports = { createPokemon, addPokemonToPokeball, knockoutPokemon, };

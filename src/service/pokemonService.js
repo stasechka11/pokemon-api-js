@@ -1,4 +1,9 @@
-const { createPokemon } = require('../client/pokemonClient');
+const {
+  createPokemon,
+  addPokemonToPokeball,
+  knockoutPokemon,
+} = require('../client/pokemonClient');
+
 const { buildCreatePokemonPayload } = require('../model/pokemonPayload');
 
 async function createPokemonForTrainer(overrides = {}) {
@@ -6,4 +11,16 @@ async function createPokemonForTrainer(overrides = {}) {
   return createPokemon(payload);
 }
 
-module.exports = { createPokemonForTrainer };
+async function addCreatedPokemonToPokeball(pokemonId) {
+  return addPokemonToPokeball(pokemonId);
+}
+
+async function knockoutCreatedPokemon(pokemonId) {
+  return knockoutPokemon(pokemonId);
+}
+
+module.exports = {
+  createPokemonForTrainer,
+  addCreatedPokemonToPokeball,
+  knockoutCreatedPokemon,
+};
