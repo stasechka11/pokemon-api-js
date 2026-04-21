@@ -51,6 +51,25 @@ Tests are integration tests and require a valid `TRAINER_TOKEN` in `.env`.
 
 > Note: the Pokemon Battle API limits trainers to 5 live Pokemons at a time. Tests create and knockout Pokemons automatically as part of setup and teardown.
 
+## Test Coverage
+
+### Create Pokemon (`createPokemon.spec.js`)
+
+| Test | What is checked |
+|---|---|
+| should create pokemon successfully | POST /pokemons returns status 201, response body is an object with an `id` field |
+
+Teardown: created Pokemon is knocked out after each test.
+
+### Add Pokemon to Pokeball (`addPokemonToPokeball.spec.js`)
+
+| Test | What is checked |
+|---|---|
+| should add pokemon to pokeball successfully | POST /trainers/add_pokeball returns status 200, response body is an object with a `message` field |
+
+Setup: a new Pokemon is created before each test.  
+Teardown: created Pokemon is knocked out after each test.
+
 ## Debugging in VS Code
 
 Two launch configurations are available via **Run & Debug** (F5):
