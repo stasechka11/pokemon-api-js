@@ -1,7 +1,7 @@
 function buildCreatePokemonPayload(overrides = {}) {
   return {
-    name: 'Pikachu',
-    photo_id: 1,
+    name: 'generate',
+    photo_id: -1,
     ...overrides,
   };
 }
