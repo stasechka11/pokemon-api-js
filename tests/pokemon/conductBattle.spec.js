@@ -12,7 +12,9 @@ describe('Pokemon API - Conduct Battle', function () {
 
     const response = await findOpponentPokemon();
     expect(response.status).to.equal(200);
-    opponentPokemonId = response.body.data[0].id;
+    const opponent = response.body.data.find(p => p.id !== String(myPokemonId));
+    expect(opponent, 'No opponent pokemon found in pokeball').to.exist;
+    opponentPokemonId = opponent.id;
   });
 
   afterEach(async function () {
