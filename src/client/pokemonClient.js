@@ -25,4 +25,19 @@ async function knockoutPokemon(pokemonId) {
   });
 }
 
-module.exports = { createPokemon, addPokemonToPokeball, knockoutPokemon, };
+async function getPokemons(params = {}) {
+  const query = new URLSearchParams(params).toString();
+  return request(`/pokemons?${query}`);
+}
+
+async function conductBattle(attackingPokemonId, defendingPokemonId) {
+  return request('/battle', {
+    method: 'POST',
+    body: JSON.stringify({
+      attacking_pokemon: String(attackingPokemonId),
+      defending_pokemon: String(defendingPokemonId),
+    }),
+  });
+}
+
+module.exports = { createPokemon, addPokemonToPokeball, knockoutPokemon, getPokemons, conductBattle };
