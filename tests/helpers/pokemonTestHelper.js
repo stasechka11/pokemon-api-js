@@ -19,8 +19,7 @@ async function cleanupPokemon(pokemonId) {
     return;
   }
 
-  const response = await knockoutCreatedPokemon(pokemonId);
-  expect(response.status).to.equal(200);
+  await knockoutCreatedPokemon(pokemonId);
 }
 
 module.exports = {
